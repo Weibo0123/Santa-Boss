@@ -1,25 +1,25 @@
 fileFormatVersion: 2
-guid: c5ffe4a42c76d40f79c6605ecc6c19dc
+guid: 4798f6f1c81334e28a919066dc45c879
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 6909472775448470969
-    second: idle_sheet_0
+      213: -172751265173905489
+    second: punch_sheet_0
   - first:
-      213: 4667534632183133795
-    second: idle_sheet_1
+      213: -7245522676872348371
+    second: punch_sheet_1
   - first:
-      213: 2532346594832860177
-    second: idle_sheet_2
+      213: -7639172888646405668
+    second: punch_sheet_2
   - first:
-      213: -4707941498450741249
-    second: idle_sheet_3
+      213: -5178522990426660778
+    second: punch_sheet_3
   - first:
-      213: 8307700516417761557
-    second: idle_sheet_4
+      213: 8775103432240811397
+    second: punch_sheet_4
   - first:
-      213: -1849538409360668733
-    second: idle_sheet_5
+      213: -7303213077065511906
+    second: punch_sheet_5
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -52,7 +52,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -115,33 +115,11 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: idle_sheet_0
+      name: punch_sheet_0
       rect:
         serializedVersion: 2
         x: 1
         y: 0
-        width: 29
-        height: 27
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 9b5a6dd91e063ef50800000000000000
-      internalID: 6909472775448470969
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: idle_sheet_1
-      rect:
-        serializedVersion: 2
-        x: 34
-        y: 0
         width: 28
         height: 27
       alignment: 0
@@ -152,19 +130,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 366fb10b40a66c040800000000000000
-      internalID: 4667534632183133795
+      spriteID: faf5fccb3a34a9df0800000000000000
+      internalID: -172751265173905489
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: idle_sheet_2
+      name: punch_sheet_1
       rect:
         serializedVersion: 2
-        x: 66
+        x: 33
         y: 0
-        width: 28
+        width: 27
         height: 27
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -174,20 +152,42 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 114ce21afc3b42320800000000000000
-      internalID: 2532346594832860177
+      spriteID: d2d7cf8838bb27b90800000000000000
+      internalID: -7245522676872348371
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: idle_sheet_3
+      name: punch_sheet_2
+      rect:
+        serializedVersion: 2
+        x: 65
+        y: 0
+        width: 25
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cd1bf6a5bb43cf590800000000000000
+      internalID: -7639172888646405668
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: punch_sheet_3
       rect:
         serializedVersion: 2
         x: 99
         y: 0
-        width: 28
-        height: 29
+        width: 30
+        height: 26
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -196,20 +196,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: ff7f581a6280aaeb0800000000000000
-      internalID: -4707941498450741249
+      spriteID: 650ec66f6c03228b0800000000000000
+      internalID: -5178522990426660778
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: idle_sheet_4
+      name: punch_sheet_4
       rect:
         serializedVersion: 2
-        x: 130
+        x: 134
         y: 0
-        width: 29
-        height: 29
+        width: 26
+        height: 27
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -218,20 +218,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 511f8658a91ea4370800000000000000
-      internalID: 8307700516417761557
+      spriteID: 58d4602441e67c970800000000000000
+      internalID: 8775103432240811397
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: idle_sheet_5
+      name: punch_sheet_5
       rect:
         serializedVersion: 2
-        x: 162
+        x: 165
         y: 0
-        width: 29
-        height: 29
+        width: 27
+        height: 27
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -240,8 +240,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 3c7cd9fad9e1556e0800000000000000
-      internalID: -1849538409360668733
+      spriteID: e1cc5868666c5aa90800000000000000
+      internalID: -7303213077065511906
       vertices: []
       indices: 
       edges: []
@@ -260,12 +260,12 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      idle_sheet_0: 6909472775448470969
-      idle_sheet_1: 4667534632183133795
-      idle_sheet_2: 2532346594832860177
-      idle_sheet_3: -4707941498450741249
-      idle_sheet_4: 8307700516417761557
-      idle_sheet_5: -1849538409360668733
+      punch_sheet_0: -172751265173905489
+      punch_sheet_1: -7245522676872348371
+      punch_sheet_2: -7639172888646405668
+      punch_sheet_3: -5178522990426660778
+      punch_sheet_4: 8775103432240811397
+      punch_sheet_5: -7303213077065511906
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

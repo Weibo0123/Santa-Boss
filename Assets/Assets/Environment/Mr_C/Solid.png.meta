@@ -1,19 +1,10 @@
 fileFormatVersion: 2
-guid: 9ec095248e4774ed497262ab6217552f
+guid: d006c274569234051a4b591ab948998d
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 7783576038182762396
-    second: jump_anticipation_sheet_0
-  - first:
-      213: 67515581891402031
-    second: jump_anticipation_sheet_1
-  - first:
-      213: -4562302150859243586
-    second: jump_anticipation_sheet_2
-  - first:
-      213: -1257904272041159054
-    second: jump_anticipation_sheet_3
+      213: -8651255196318234504
+    second: Solid_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -46,7 +37,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -60,7 +51,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 12
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -109,89 +100,177 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: jump_anticipation_sheet_0
+      name: Solid_0
       rect:
         serializedVersion: 2
-        x: 2
-        y: 0
-        width: 28
-        height: 27
+        x: 0
+        y: 32
+        width: 12
+        height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: c973026ea21d40c60800000000000000
-      internalID: 7783576038182762396
+      spriteID: 878033a3c3190f780800000000000000
+      internalID: -8651255196318234504
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: jump_anticipation_sheet_1
+      name: Solid_1
       rect:
         serializedVersion: 2
-        x: 34
-        y: 0
-        width: 28
-        height: 25
+        x: 12
+        y: 32
+        width: 12
+        height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: f29d073601ddfe000800000000000000
-      internalID: 67515581891402031
+      spriteID: 897abc43d9157400396373317801ff88
+      internalID: 945689037
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: jump_anticipation_sheet_2
+      name: Solid_2
       rect:
         serializedVersion: 2
-        x: 67
-        y: 0
-        width: 28
-        height: 29
+        x: 24
+        y: 32
+        width: 12
+        height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: ebfb80cad527fa0c0800000000000000
-      internalID: -4562302150859243586
+      spriteID: 13b5cd45300004e2f93fd80c3cfc1430
+      internalID: 335625318
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: jump_anticipation_sheet_3
+      name: Solid_3
       rect:
         serializedVersion: 2
-        x: 99
-        y: 1
-        width: 25
-        height: 27
+        x: 36
+        y: 32
+        width: 12
+        height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 2765a8faab60b8ee0800000000000000
-      internalID: -1257904272041159054
+      spriteID: e7a690fe269df438c8d67baaca1628ab
+      internalID: 864760308
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Solid_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 12
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d14a649ed13784aac8cc51bc0c903e10
+      internalID: -874872584
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Solid_5
+      rect:
+        serializedVersion: 2
+        x: 12
+        y: 0
+        width: 12
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 04b105b11fecf44ed9045d77f7e0e497
+      internalID: -2097152225
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Solid_6
+      rect:
+        serializedVersion: 2
+        x: 24
+        y: 0
+        width: 12
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9a4825d984a6046418de97eb487ae134
+      internalID: -774594084
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Solid_7
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 0
+        width: 12
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cdf3f64a2d6994ab1948e49a6b54b622
+      internalID: 1337426493
       vertices: []
       indices: 
       edges: []
@@ -200,7 +279,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 777f7b03928fb44708ba8d2189c41864
     internalID: 0
     vertices: []
     indices: 
@@ -208,12 +287,18 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries: []
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":12.0,"y":32.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      jump_anticipation_sheet_0: 7783576038182762396
-      jump_anticipation_sheet_1: 67515581891402031
-      jump_anticipation_sheet_2: -4562302150859243586
-      jump_anticipation_sheet_3: -1257904272041159054
+      Solid_0: -8651255196318234504
+      Solid_1: 945689037
+      Solid_2: 335625318
+      Solid_3: 864760308
+      Solid_4: -874872584
+      Solid_5: -2097152225
+      Solid_6: -774594084
+      Solid_7: 1337426493
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
