@@ -1,16 +1,39 @@
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class PlayerMovement : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    public float moveSpeed = 5f;     
+    public float jumpForce = 10f;     
+    public Transform groundCheck;     
+    public float checkRadius = 0.2f; 
+    public LayerMask Ground;   
+
+    private Rigidbody2D rb;
+    private Vector2 moveInput;
+    private bool isGrounded;
+
     void Start()
     {
-        
+        rb = GetComponent<Rigidbody2D>();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+        moveInput.x = Input.GetAxisRaw("Horizontal");
+        moveInput.y = 0;
+
+
+        isGrounded = Physics2D.OverlapCircle(groundCheck.position, checkRadius, Ground);
+
+
+        if (Input.GetButtonDown("Jump") && isGrounded)
+        {
+            rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
+        }
+    }
+
+    void FixedUpdate()
+    {
+        rb.linearVelocity = new Vector2(moveInput.x * moveSpeed, rb.linearVelocity.y);
     }
 }
