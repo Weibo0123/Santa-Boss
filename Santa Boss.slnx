@@ -77,9 +77,9 @@
   <Project Path="Unity.2D.Aseprite.Common.csproj" />
   <Project Path="Unity.Services.Core.Device.csproj" />
   <Project Path="Unity.Services.Core.Analytics.csproj" />
-  <Project Path="Assembly-CSharp.csproj" />
   <Project Path="UnityEngine.Purchasing.AppleStub.csproj" />
   <Project Path="UnityEngine.Purchasing.AppleCore.csproj" />
+  <Project Path="Assembly-CSharp.csproj" />
   <Project Path="UnityEngine.Purchasing.SecurityStub.csproj" />
   <Project Path="IAPResolver.csproj" />
   <Project Path="UnityEngine.Purchasing.WinRTStub.csproj" />
