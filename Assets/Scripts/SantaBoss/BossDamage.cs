@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class BossDamage : MonoBehaviour
 {
+    [Header("Damage")]
     [SerializeField] int damageAmount = 1;
     [SerializeField] float knockbackForceX = 7f;
     [SerializeField] float knockbackForceY = 5f;

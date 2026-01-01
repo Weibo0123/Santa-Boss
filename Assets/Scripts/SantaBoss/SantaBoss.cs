@@ -2,27 +2,34 @@ using UnityEngine;
 
 public class SantaBoss : MonoBehaviour
 {
+    [Header("Chase")]
     public Transform player;
     [SerializeField] float chaseRange = 8f;
+    [Header("Leap")]
     [SerializeField] float leapTriggerHeight = 1.5f;
     [SerializeField] float leapTriggerDistance = 8f;
-
+    [Header("Punch")] 
+    [SerializeField] float punchCooldown = 10f;
+    float punchTimer = 10f;
     enum BossState
     {
         Idle,
         Chasing,
-        Leaping
+        Leaping,
+        TeleportPunching
     }
 
     BossState currentState = BossState.Idle;
     BossMovement movement;
     BossLeap leap;
+    BossPunch punch;
     bool leapStarted = false;
 
     void Start()
     {
         movement = GetComponent<BossMovement>();
         leap = GetComponent<BossLeap>();
+        punch = GetComponent<BossPunch>();
         leap.onLeapFinished = onLeapFinished;
     }
 
@@ -31,6 +38,7 @@ public class SantaBoss : MonoBehaviour
     {
         float dy = player.position.y - transform.position.y;
         distanceToPlayer = player.position.x - transform.position.x;
+        punchTimer = Mathf.Max(0, punchTimer - Time.fixedDeltaTime);
         switch (currentState)
         {
             case BossState.Idle:
@@ -42,6 +50,7 @@ public class SantaBoss : MonoBehaviour
                 movement.Chase(player);
                 movement.TryJump(player);
                 TrySwitchToLeap(dy);
+                TrySwitchToPunching();
                 TrySwitchToIdle();
                 break;
 
@@ -52,33 +61,53 @@ public class SantaBoss : MonoBehaviour
                         leap.leap(player);
                     }
                 break;
+
+            case BossState.TeleportPunching:
+                punch.TryPunch(player, onPunchFinished);
+                break;
         }
     }
 
-void TrySwitchToLeap(float dy)
+    void TrySwitchToLeap(float dy)
     {
-        if (leap.CanLeap() && (dy > leapTriggerHeight || Mathf.Abs(distanceToPlayer) > leapTriggerDistance))
-        {
-            currentState = BossState.Leaping;
-        }
+            if (leap.CanLeap() && (dy > leapTriggerHeight || Mathf.Abs(distanceToPlayer) > leapTriggerDistance))
+            {
+                currentState = BossState.Leaping;
+            }
     }
 
     void TrySwitchToChasing()
     {
-        if (DistanceToPlayer() <= chaseRange)
-            currentState = BossState.Chasing;
+            if (DistanceToPlayer() <= chaseRange)
+                currentState = BossState.Chasing;
     }
 
     void TrySwitchToIdle()
     {
-        if (DistanceToPlayer() > chaseRange)
+        if ( DistanceToPlayer() > chaseRange)
             currentState = BossState.Idle;
+    }
+
+    void TrySwitchToPunching()
+    {
+        bool isGrounded = movement.IsGrounded();
+        if (punchTimer <= 0 && punch.canPunch && isGrounded)
+        {
+            currentState = BossState.TeleportPunching;
+        }
+        
     }
 
     void onLeapFinished()
     {
         currentState = BossState.Chasing;
         leapStarted = false;
+    }
+
+    void onPunchFinished()
+    {
+        currentState = BossState.Chasing;
+        punchTimer = punchCooldown;
     }
 
     float DistanceToPlayer()

@@ -3,11 +3,13 @@ using System.Collections;
 
 public class PlayerController : MonoBehaviour
 {
+    [Header("Movement")]
     [SerializeField] float moveSpeed = 5f;     
     [SerializeField] float jumpForce = 10f;     
     [SerializeField] Transform groundCheck;     
     [SerializeField] float checkRadius = 0.2f; 
-    [SerializeField] LayerMask Ground;   
+    [SerializeField] LayerMask Ground;
+    [Header("Knockback Control")]   
     [SerializeField] float controlMultiplier = 1f;
     [SerializeField] float controlRecoverTime = 0.2f;
     private Rigidbody2D rb;

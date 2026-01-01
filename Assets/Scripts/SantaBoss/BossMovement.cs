@@ -12,6 +12,7 @@ public class BossMovement : MonoBehaviour
 
     [Header("Jump")]
     [SerializeField] float jumpForce = 10f;
+    public bool isJumping = false;
 
     [Header("Ground Check")]
     [SerializeField] Transform groundCheck;
@@ -46,7 +47,7 @@ public class BossMovement : MonoBehaviour
         );
 
         animator.SetBool("isRunning", true);
-        spriteRenderer.flipX = dir < 0;
+        animator.transform.localScale = new Vector3(dir, 1, 1);
     }
 
     public void Stop()
@@ -72,9 +73,10 @@ public class BossMovement : MonoBehaviour
     {
         rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
         animator.SetTrigger("jump");
+        isJumping = true;
     }
 
-    bool IsGrounded()
+    public bool IsGrounded()
     {
         return Physics2D.Raycast(
             groundCheck.position,
