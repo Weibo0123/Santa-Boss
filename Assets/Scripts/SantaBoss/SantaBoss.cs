@@ -10,6 +10,12 @@ public class SantaBoss : MonoBehaviour
     [SerializeField] float leapTriggerDistance = 8f;
     [Header("Punch")] 
     [SerializeField] float punchCooldown = 10f;
+    [Header("Exception Handling")]
+    [SerializeField] float stuckTimeLimit = 5f;
+    [SerializeField] float minMoveThreshold = 0.5f;
+    float stuckTimer = 0f;
+    Vector2 lastPosition;
+
     float punchTimer = 10f;
     enum BossState
     {
@@ -23,6 +29,7 @@ public class SantaBoss : MonoBehaviour
     BossMovement movement;
     BossLeap leap;
     BossPunch punch;
+    Rigidbody2D rb;
     bool leapStarted = false;
 
     void Start()
@@ -30,7 +37,9 @@ public class SantaBoss : MonoBehaviour
         movement = GetComponent<BossMovement>();
         leap = GetComponent<BossLeap>();
         punch = GetComponent<BossPunch>();
+        rb = GetComponent<Rigidbody2D>();
         leap.onLeapFinished = onLeapFinished;
+        lastPosition = rb.position;
     }
 
     float distanceToPlayer;
@@ -39,6 +48,11 @@ public class SantaBoss : MonoBehaviour
         float dy = player.position.y - transform.position.y;
         distanceToPlayer = player.position.x - transform.position.x;
         punchTimer = Mathf.Max(0, punchTimer - Time.fixedDeltaTime);
+        if (transform.position.y < -4f)
+        {
+            // Reset boss if it falls off the map
+            HandleException();
+        }
         switch (currentState)
         {
             case BossState.Idle:
@@ -51,7 +65,7 @@ public class SantaBoss : MonoBehaviour
                 movement.TryJump(player);
                 TrySwitchToLeap(dy);
                 TrySwitchToPunching();
-                TrySwitchToIdle();
+                // TrySwitchToIdle();
                 break;
 
             case BossState.Leaping:
@@ -113,5 +127,34 @@ public class SantaBoss : MonoBehaviour
     float DistanceToPlayer()
     {
         return Vector2.Distance(transform.position, player.position);
+    }
+
+    void HandleStuck()
+    {
+        float moved = Vector2.Distance(rb.position, rb.position);
+        if (moved < minMoveThreshold)
+        {
+            stuckTimer += Time.fixedDeltaTime;
+        }
+        else
+        {
+            stuckTimer = 0f;
+        }
+
+        lastPosition = rb.position;
+
+        if (stuckTimer >= stuckTimeLimit)
+        {
+            HandleException();
+            stuckTimer = 0f;
+        }
+    }
+
+    void HandleException()
+    {
+        StopAllCoroutines();
+        rb.linearVelocity = Vector2.zero;
+        rb.simulated = false;
+        currentState = BossState.TeleportPunching;
     }
 }

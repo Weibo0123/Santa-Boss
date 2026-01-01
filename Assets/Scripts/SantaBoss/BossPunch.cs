@@ -11,11 +11,13 @@ public class BossPunch : MonoBehaviour
     Animator animator;
     bool isPunching = false;
     public bool canPunch => !isPunching;
+    Rigidbody2D rb;
 
     void Awake()
     {
         animator = GetComponent<Animator>();
         punchHitbox.SetActive(false);
+        rb = GetComponent<Rigidbody2D>();
     }
 
     public System.Action OnPunchFinished; 
@@ -37,10 +39,11 @@ public class BossPunch : MonoBehaviour
         yield return new WaitForSeconds(windUpTime);
 
         // Teleport
-        float dir = Mathf.Sign(player.position.x - transform.position.x);
-        Vector3 newPosition = new Vector3(player.position.x - dir * teleportOffset, transform.position.y, transform.position.z);
+        float side = Mathf.Sign(player.position.x - transform.position.x);
+        Vector3 newPosition = new Vector3(player.position.x + side * teleportOffset, player.position.y, transform.position.z);
         transform.position = newPosition;
-        if (animator != null) animator.transform.localScale = new Vector3(dir, 1, 1);
+        if (animator != null) animator.transform.localScale = new Vector3(-side, 1, 1);
+        rb.simulated = true;
         // Start punch
         animator.SetTrigger("punch");
     }
