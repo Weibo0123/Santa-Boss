@@ -3,7 +3,7 @@ using System.Collections;
 
 public class BossLeap : MonoBehaviour
 {
-    Rigidbody2D rb;
+    // Leap parameters
     Animator animator;
     [Header("Leap")]
     [SerializeField] float leapForceY = 15f;
@@ -16,7 +16,9 @@ public class BossLeap : MonoBehaviour
     [SerializeField] LayerMask groundLayer;
 
     public System.Action onLeapFinished;
+    Rigidbody2D rb;
 
+    // Check if boss is grounded
     bool IsGrounded()
     {
         return Physics2D.Raycast(groundCheck.position, Vector2.down, groundCheckDistance, groundLayer);
@@ -35,6 +37,7 @@ public class BossLeap : MonoBehaviour
         return canLeap;
     }
 
+    // Leap routine
     IEnumerator Leap(Transform player)
     {
         canLeap = false;
@@ -56,7 +59,8 @@ public class BossLeap : MonoBehaviour
         canLeap = true;
     }
 
-        public void leap(Transform player)
+    // Start leap attack
+    public void leap(Transform player)
     {
         if (canLeap)
         {

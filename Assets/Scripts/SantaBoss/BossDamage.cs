@@ -2,11 +2,13 @@ using UnityEngine;
 
 public class BossDamage : MonoBehaviour
 {
+    // Damage parameters
     [Header("Damage")]
     [SerializeField] int damageAmount = 1;
     [SerializeField] float knockbackForceX = 7f;
     [SerializeField] float knockbackForceY = 5f;
     
+    // Detect collision with player
     void OnTriggerEnter2D(Collider2D other)
     {
         if (!other.CompareTag("Player")) return;   

@@ -3,6 +3,7 @@ using System.Collections;
 
 public class PlayerHealth : MonoBehaviour
 {
+    // Health parameters
     [SerializeField] int maxHealth = 100;
     [SerializeField] float InvincibilityCooldown = 1f;
     [SerializeField] float knockbackDuration = 0.3f;
@@ -15,7 +16,8 @@ public class PlayerHealth : MonoBehaviour
     {
         currentHealth = maxHealth;
     }
-
+    
+    // Apply damage to player
     public void TakeDamage(int damage, Vector2 knockback)
     {
         if (isInvincible) return;
@@ -34,7 +36,8 @@ public class PlayerHealth : MonoBehaviour
             }
         }
     }
-    // Update is called once per frame
+
+    // Invincibility routine
     IEnumerator Invincibility()
     {
         isInvincible = true;

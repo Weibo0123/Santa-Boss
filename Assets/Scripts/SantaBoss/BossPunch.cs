@@ -3,6 +3,7 @@ using System.Collections;
 
 public class BossPunch : MonoBehaviour
 {
+    // Punch parameters
     [Header("Punch")]  
     [SerializeField] float windUpTime = 0.5f;
     [SerializeField] float teleportOffset = 1.2f;
@@ -21,6 +22,7 @@ public class BossPunch : MonoBehaviour
     }
 
     public System.Action OnPunchFinished; 
+    // Try to start punch attack
     public void TryPunch(Transform player, System.Action onFinished)
     {
         if (canPunch)
@@ -31,6 +33,7 @@ public class BossPunch : MonoBehaviour
         }
     }
 
+    // Punch routine
     IEnumerator PunchRoutine(Transform player, System.Action onFinished)
     {
         DamageHitbox.SetActive(false);
@@ -48,17 +51,20 @@ public class BossPunch : MonoBehaviour
         animator.SetTrigger("punch");
     }
 
+    // Activate punch hitbox, be called by the animation event
     public void StartPunchHitbox()
     {
         punchHitbox.SetActive(true);
     }
 
+    // Deactivate punch hitbox, be called by the animation event
     public void EndPunchHitbox()
     {
         punchHitbox.SetActive(false);
         DamageHitbox.SetActive(true);
     }
 
+    // Finish punch, be called by the animation event
     public void FinishPunch()
     {
         isPunching = false;

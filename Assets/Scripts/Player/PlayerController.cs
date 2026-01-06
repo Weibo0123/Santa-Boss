@@ -3,6 +3,7 @@ using System.Collections;
 
 public class PlayerController : MonoBehaviour
 {
+    // Movement parameters
     [Header("Movement")]
     [SerializeField] float moveSpeed = 5f;     
     [SerializeField] float jumpForce = 10f;     
@@ -16,6 +17,7 @@ public class PlayerController : MonoBehaviour
     private Vector2 moveInput;
     private bool isGrounded;
     private bool isJumping;
+    // Player states
     enum PlayerState { Normal, Knockback }
     PlayerState currentState = PlayerState.Normal;
 
@@ -41,6 +43,7 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
+        // Handle movement based on current state
         switch (currentState)
         {
             case PlayerState.Normal:
@@ -58,6 +61,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    // Apply knockback to player
     public void ApplyKnockback(Vector2 force, float duration)
     {
         Debug.Log("Applying Knockback");
