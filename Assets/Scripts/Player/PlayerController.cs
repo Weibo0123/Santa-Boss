@@ -11,7 +11,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float AirDeceleration = 15f;
     [Header("Jump")]
     [SerializeField] LayerMask Ground;
-    [SerializeField] float jumpForce = 15f;     
+    [SerializeField] float jumpForce = 12f;     
     [SerializeField] Transform groundCheck;
     [SerializeField] float checkRadius = 0.2f; 
     [SerializeField] float jumpBuffer = 0.3f;
@@ -19,7 +19,7 @@ public class PlayerController : MonoBehaviour
     [Header("Gravity")]
     [SerializeField] float gravityScale = 3f;
     [SerializeField] float fallMultiplier = 2f;
-    [SerializeField] float jumpCutMultiplier = 1f;
+    [SerializeField] float jumpCutMultiplier = 0.5f;
     [SerializeField] float jumpCutSmooth = 30f;
     [Header("Knockback Control")]   
     [SerializeField] float controlMultiplier = 1f;
@@ -77,7 +77,7 @@ public class PlayerController : MonoBehaviour
         switch (currentState)
         {
             case PlayerState.Normal:
-                float targetSpeed = moveInput.x * moveSpeed;
+                float targetSpeed = moveInput.x * moveSpeed * controlMultiplier;
                 float accelRate;
                 if (Mathf.Abs(targetSpeed) > 0.01f)
                 {
