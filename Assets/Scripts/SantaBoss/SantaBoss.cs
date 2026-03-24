@@ -13,7 +13,7 @@ public class SantaBoss : MonoBehaviour
     [SerializeField] float punchCooldown = 10f; // Time between punches
     [Header("Exception Handling")]
     [SerializeField] float stuckTimeLimit = 5f; // Time boss can be stuck before exception handling
-    [SerializeField] float minMoveThreshold = 0.5f; // Minimum distance to consider as movement
+    [SerializeField] float minMoveThreshold = 0.2f; // Minimum distance to consider as movement
     float stuckTimer = 0f; // Timer to track how long the boss has been stuck
     Vector2 lastPosition; // Last recorded position of the boss
 
@@ -56,7 +56,7 @@ public class SantaBoss : MonoBehaviour
         // Update the punch timer cooldown
         punchTimer = Mathf.Max(0, punchTimer - Time.fixedDeltaTime);
         // Handle stuck detection
-        if (transform.position.y < -4f)
+        if (transform.position.y < -10f)
         {
             // Use punch if boss falls off the map
             HandleException();
@@ -74,6 +74,7 @@ public class SantaBoss : MonoBehaviour
                 movement.TryJump(player);
                 TrySwitchToLeap(dy);
                 TrySwitchToPunching();
+                HandleStuck();
                 break;
 
             case BossState.Leaping:
@@ -83,11 +84,13 @@ public class SantaBoss : MonoBehaviour
                         leapStarted = true;
                         leap.leap(player);
                     }
+                HandleStuck();
                 break;
 
             case BossState.TeleportPunching:
             // Attempt to punch the player
                 punch.TryPunch(player, onPunchFinished);
+                HandleStuck();
                 break;
         }
     }
@@ -172,6 +175,6 @@ public class SantaBoss : MonoBehaviour
         rb.linearVelocity = Vector2.zero;
         rb.simulated = false;
         // Teleport boss to player
-        currentState = BossState.TeleportPunching;
+        punch.punch(player, onPunchFinished);
     }
 }

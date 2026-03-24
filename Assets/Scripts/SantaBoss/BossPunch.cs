@@ -33,6 +33,13 @@ public class BossPunch : MonoBehaviour
         }
     }
 
+    public void punch(Transform player, System.Action onFinished)
+    {
+            isPunching = true;
+            OnPunchFinished = onFinished;
+            StartCoroutine(PunchRoutine(player, onFinished));
+    }
+
     // Punch routine
     IEnumerator PunchRoutine(Transform player, System.Action onFinished)
     {

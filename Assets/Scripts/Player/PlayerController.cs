@@ -24,6 +24,11 @@ public class PlayerController : MonoBehaviour
     [Header("Knockback Control")]   
     [SerializeField] float controlMultiplier = 1f;
     [SerializeField] float controlRecoverTime = 0.2f;
+    [Header("Fall Death")]
+    [SerializeField] float fallDeathTime = 5f;      // seconds of falling before death
+    [SerializeField] float fallTimerStartY = -5f;   // only start counting below this height
+    float fallingTimer;
+    PlayerHealth Health;
     Vector2 moveInput;
     bool isGrounded;
     bool isJumping;
@@ -42,6 +47,7 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
+        Health = GetComponent<PlayerHealth>();
     }
 
     void Update()
@@ -69,6 +75,7 @@ public class PlayerController : MonoBehaviour
         {
             jumpBufferTimer -= Time.deltaTime;
         }
+        CheckFallDeath();
     }
 
     void FixedUpdate()
@@ -156,6 +163,7 @@ public class PlayerController : MonoBehaviour
         StartCoroutine(KnockbackCoroutine(force, duration));
     }
 
+    // Coroutine to handle knockback duration and control recovery
     IEnumerator KnockbackCoroutine(Vector2 force, float duration)
     {
         controlMultiplier = 0f;
@@ -171,4 +179,25 @@ public class PlayerController : MonoBehaviour
             yield return null;
         }
     }
+
+    // Check if the player has been falling for too long and should die
+    void CheckFallDeath()
+    {
+    bool isActuallyFalling = !isGrounded && rb.linearVelocity.y < -0.1f && transform.position.y < fallTimerStartY;
+
+    if (isActuallyFalling)
+    {
+        fallingTimer += Time.deltaTime;
+
+        if (fallingTimer >= fallDeathTime)
+        {
+            Health.Die();
+        }
+    }
+    else
+    {
+        fallingTimer = 0f;
+    }
+}
+
 }
